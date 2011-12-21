@@ -1,7 +1,30 @@
-%h2= "Folder: #{@path}"
+%h2= "Dropbox Folder: #{@path}"
 %table
   %tr
     %th= "filename"
+    %th= "url"
+  - if @is_dir && @path != '/Public'
+    %tr
+      %td=  image_tag('/plugin/lokka-dropbox/images/parent_folder.png') + ' ' + link_to('Parent folder', "/admin/plugins/dropbox/list?path=#{h File.dirname(@path)}")
+      %td
   - @contents.each do |content|
     %tr
-      %td= link_to h(content['path']), "http://dl.dropbox.com/u/#{@uid}/#{h content['path'].gsub(/\/Public\//, '')}"
+      - if content['is_dir']
+        %td= image_tag('/plugin/lokka-dropbox/images/folder.png') + ' ' + link_to("#{h File.basename(content['path'])}/", "/admin/plugins/dropbox/list?path=#{h content['path']}")
+        %td
+      - else
+        - url = "http://dl.dropbox.com/u/#{@uid}/#{h content['path'].gsub(/^\/Public\//, '')}"
+        - if content['mime_type'] =~ /^image\//
+          - icon = 'page_white_picture.png'
+        - elsif content['mime_type'] == 'application/pdf'
+          - icon = 'page_white_acrobat.png'
+        - elsif content['mime_type'] == 'application/msword' || content['mime_type'] == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+          - icon = 'page_white_word.png'
+        - elsif content['mime_type'] == 'application/vnd.ms-excel' || content['mime_type'] == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+          - icon = 'page_white_excel.png'
+        - elsif content['mime_type'] == 'application/vnd.ms-powerpoint' || content['mime_type'] == 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+          - icon = 'page_white_powerpoint.png'
+        - else
+          - icon = 'page_white_text.png'
+        %td= image_tag("/plugin/lokka-dropbox/images/#{icon}") + ' ' + link_to(h(File.basename(content['path'])), url, :target => '_blank')
+        %td= text_field_tag '', :value => url, :onclick => 'this.select();'

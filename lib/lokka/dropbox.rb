@@ -70,7 +70,6 @@ module Lokka
       end
 
       app.get '/admin/plugins/dropbox/list' do
-
         # Get the DropboxClient object.  Redirect to OAuth flow if necessary.
         db_client = get_db_client
         unless db_client
@@ -94,12 +93,16 @@ module Lokka
         end
 
         @uid = account_info['uid']
+        @is_dir = entry['is_dir']
         @path = entry['path']
         @contents = entry['contents']
+
+        return 'You can only access to Public folder.' unless @path =~ /^\/Public/
 
         haml :"plugin/lokka-dropbox/views/list", :layout => :"admin/layout"
       end
     end
   end
 end
+
 

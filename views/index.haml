@@ -11,4 +11,4 @@
     %input{:type => 'text', :id => 'dropbox_app_secret', :name => 'dropbox_app_secret', :value => Option.dropbox_app_secret}
   .field
     %input{:type => 'submit', :value => t('edit')}
-%p= link_to 'List Files', '/admin/plugins/dropbox/list?path=/Public'
+%p= link_to '/Public', '/admin/plugins/dropbox/list?path=/Public'
