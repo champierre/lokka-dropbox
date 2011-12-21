@@ -4,4 +4,4 @@
     %th= "filename"
   - @contents.each do |content|
     %tr
-      %td= link_to h(content['path']), "#{PUBLIC_PATH}#{h content['path'].gsub(/\/Public\//, '')}"
+      %td= link_to h(content['path']), "http://dl.dropbox.com/u/#{@uid}/#{h content['path'].gsub(/\/Public\//, '')}"
