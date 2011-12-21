@@ -1,0 +1,14 @@
+%h2 Dropbox
+%form{:action => '/admin/plugins/dropbox', :method => 'post'}
+  %input{:type => 'hidden', :name => '_method', :value => 'put'}
+  .field
+    %label{:for => 'dropbox_app_key'} App key
+    %br
+    %input{:type => 'text', :id => 'dropbox_app_key', :name => 'dropbox_app_key', :value => Option.dropbox_app_key}
+  .field
+    %label{:for => 'dropbox_app_secret'} App secret
+    %br
+    %input{:type => 'text', :id => 'dropbox_app_secret', :name => 'dropbox_app_secret', :value => Option.dropbox_app_secret}
+  .field
+    %input{:type => 'submit', :value => t('edit')}
+%p= link_to 'List Files', '/admin/plugins/dropbox/list?path=/Public'

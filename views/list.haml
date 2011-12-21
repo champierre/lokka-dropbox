@@ -1,0 +1,7 @@
+%h2= "Folder: #{@path}"
+%table
+  %tr
+    %th= "filename"
+  - @contents.each do |content|
+    %tr
+      %td= link_to h(content['path']), "#{PUBLIC_PATH}#{h content['path'].gsub(/\/Public\//, '')}"
