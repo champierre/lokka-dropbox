@@ -2,6 +2,8 @@
 
 Dropbox plugin for Lokka.
 
+It enables Lokka to have access to the files under your Dropbox Public folder.
+
 <img src="http://gyazo.com/f30a109c7eb2037c21781c1504349276.png" width="600px" />
 
 ## Installation
