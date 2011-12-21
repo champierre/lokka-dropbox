@@ -2,6 +2,8 @@
 
 Dropbox plugin for Lokka.
 
+<img src="http://gyazo.com/f30a109c7eb2037c21781c1504349276.png" width="600px" />
+
 ## Installation
 
     $ cd LOKKA_ROOT/public/plugin
