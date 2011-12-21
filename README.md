@@ -15,4 +15,8 @@ Dropbox plugin for Lokka.
 3. Put a file under 'Public' of your Dropbox folder.
 4. The file can be viewed from '/Public' link at plugin setting page.
 
+## Credit
+
+SILK ICONS by Mark James(http://www.famfamfam.com/lab/icons/silk/)
+
 
